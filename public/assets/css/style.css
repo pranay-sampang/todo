@@ -50,6 +50,9 @@
     color: #fff;
     border-color: #fd0d1d;
 }
+input::placeholder{
+    color: #d0cbcb !important;
+}
 @media (max-width: 768px) {
     .dropdown-menu[data-bs-popper] {
         position: absolute;
