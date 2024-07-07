@@ -37,4 +37,24 @@ class TodoService
             ->get();
         return $todoDetails;
     }
+
+    public function update($todoDetails, $todo)
+    {
+        $todo->update($todoDetails);
+        Todotask::where('todo_id', $todo->id)->delete();
+        $tasks = $todoDetails['task'];
+        foreach ($tasks as $task) {
+            TodoTask::create([
+                'todo_id' => $todo->id,
+                'task'    => $task,
+                'status'  => 'pending',
+            ]);
+        }
+        return $todo;
+    }
+
+    public function delete($todo)
+    {
+        return $todo->delete();
+    }
 }

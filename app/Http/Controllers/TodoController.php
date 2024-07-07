@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Todo;
 use Illuminate\Http\Request;
 use App\Services\TodoService;
 use App\Http\Requests\CreateTodoRequest;
+use App\Http\Requests\UpdateTodoRequest;
 
 class TodoController extends Controller
 {
@@ -28,5 +30,24 @@ class TodoController extends Controller
     {
         $todoListDetails = $this->todoService->getTodoListDetails($id);
         return json_encode($todoListDetails);
+    }
+
+    public function update(UpdateTodoRequest $request, Todo $todo)
+    {
+        $validatedData = $request->validated();
+        $created       = $this->todoService->update($validatedData, $todo);
+        if ($created) {
+            return redirect()->route('index');
+        }
+    }
+
+    public function delete(Todo $todo)
+    {
+        $deletedTodoList = $this->todoService->delete($todo);
+        if ($deletedTodoList) {
+            return json_encode(['status' => 'success']);
+        } else {
+            return json_encode(['status' => 'error']);
+        }
     }
 }

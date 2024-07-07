@@ -83,6 +83,10 @@
                         $('#editTaskModal, #title').val(response[0].title);
                         $('#editTaskModal, #task').val(response[0].todo_task[0].task);
                         $('.todo-tasks-wrapper').empty();
+                        let updateUrl = "{{ route('todo-list.update', 'todoListId') }}";
+                        updateUrl = url.replace('todoListId', response[0].id);
+                        $('#edit_todo_list').attr('action', updateUrl);
+                        $('#todo_list_id').val(response[0].id)
                         $.each(response[0].todo_task.slice(1), function(index, value) {
                             let newDiv = `
                             <div class="mb-3">
@@ -100,7 +104,59 @@
                             </div>`;
                             $('.todo-tasks-wrapper').append(newDiv);
                         });
-                        $('#editTaskModal').modal('show');
+                        $('#editTodoList').modal('show');
+                    }
+                });
+            });
+
+            $('body').on('click', '.delete-btn', function(event) {
+                event.preventDefault();
+                let todoListId = $(this).attr('data-delete-btn');
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        let url = "{{ route('todo-list.destroy', 'todoListId') }}";
+                        url = url.replace('todoListId', todoListId);
+                        $.ajax({
+                            url: url,
+                            type: 'DELETE',
+                            headers: {
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            },
+                            dataType: 'json',
+                            success: function(data) {
+                                if(data.status == 'success'){
+                                    Swal.fire({
+                                        title: "Deleted!",
+                                        text: "Todo list has been deleted.",
+                                        icon: "success"
+                                    });
+                                }else{
+                                    Swal.fire({
+                                        title: "Error!",
+                                        text: "Something went wrong.",
+                                        icon: "error"
+                                    });
+                                }
+                                setTimeout(function() {
+                                    window.location.reload();
+                                }, 1500);
+                            },
+                            error: function(jqXHR, textStatus, errorThrown) {
+                                if (jqXHR.status == 404) {
+                                    toastr.error(jqXHR.responseText, {
+                                        timeOut: 4000
+                                    });
+                                }
+                            }
+                        });
                     }
                 });
             });

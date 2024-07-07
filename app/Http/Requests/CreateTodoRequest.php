@@ -22,8 +22,8 @@ class CreateTodoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|max:250',
-            'task'  => 'required|max:250',
+            'title'   => 'required|max:250',
+            'task'    => 'required|max:250',
         ];
     }
 

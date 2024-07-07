@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateTodoRequest extends FormRequest
 {
-        /**
+    /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
@@ -14,7 +14,7 @@ class UpdateTodoRequest extends FormRequest
         return true;
     }
 
-        /**
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
@@ -22,8 +22,8 @@ class UpdateTodoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|max:250',
-            'task'  => 'required|max:250',
+            'title'   => 'required|max:250',
+            'task'    => 'required|max:250',
         ];
     }
 

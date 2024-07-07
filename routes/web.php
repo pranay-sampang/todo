@@ -21,7 +21,8 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::middleware('auth')->group(function () {
     Route::post('/todo', [TodoController::class, 'store'])->name('todo.store');
     Route::get('/todo/{id}', [TodoController::class, 'getTodoList'])->name('todo-list.index');
-    Route::patch('/todo', [TodoController::class, 'update'])->name('todo.update');
+    Route::patch('/todo/{todo}', [TodoController::class, 'update'])->name('todo-list.update');
+    Route::delete('/todo/{todo}', [TodoController::class, 'delete'])->name('todo-list.destroy');
 });
 
 require __DIR__.'/auth.php';

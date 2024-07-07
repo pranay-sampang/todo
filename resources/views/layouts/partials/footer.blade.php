@@ -41,16 +41,17 @@
 </div>
 
 <!-- Edit Modal -->
-<div class="modal fade" id="editTaskModal" tabindex="-1" aria-labelledby="editTaskModalLabel" aria-hidden="true">
+<div class="modal fade" id="editTodoList" tabindex="-1" aria-labelledby="editTodoListLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editTaskModalLabel">Edit Todo</h5>
+                <h5 class="modal-title" id="editTodoListLabel">Edit Todo</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-4">
-                <form action="{{ route('todo.update') }}" method="POST">
+                <form id="edit_todo_list" method="POST">
                     @csrf
+                    @method('PATCH')
                     <div class="mb-3">
                         <x-input-label for="title" :value="__('Enter Title')" />
                         <x-text-input id="title" type="text" name="title" :value="old('title')" placeholder="Enter Title" />
@@ -84,6 +85,7 @@
 
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.all.min.js"></script>
 
 <script>
     $(document).ready(function() {
@@ -126,5 +128,6 @@
         $('.todo-tasks-wrapper').on('click', '.delete-todo-btn', function() {
             $(this).closest('.mb-3').remove();
         });
+
     });
 </script>
