@@ -27,8 +27,11 @@
                             </div>
                             <div class="mb-4">
                                 <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-                                <x-text-input id="password_confirmation" type="password_confirmation" name="password_confirmation" :value="old('password_confirmation')" placeholder="Confirm Password" />
+                                <x-text-input id="password_confirmation" type="password" name="password_confirmation" :value="old('password_confirmation')" placeholder="Confirm Password" />
                                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                            </div>
+                            <div class="mb-4 text-center">
+                                <a href="{{ route('login') }}">Already Registered?</a>
                             </div>
                             <div class="d-grid">
                                 <x-primary-button>

@@ -57,4 +57,22 @@ class TodoService
     {
         return $todo->delete();
     }
+
+    public function updateTodoTask($id, $status)
+    {
+        TodoTask::where('id', $id)->update(['status' => $status]);
+        return TodoTask::find($id);
+    }
+
+    public function getSearchResultForTodoRequests($queryData)
+    {
+        $searchResult = Todo::with('todoTask')
+            ->where('title', 'like', '%' . $queryData . '%')
+            ->orWhereHas('todoTask', function ($query) use ($queryData) {
+                $query->where('task', 'like', '%' . $queryData . '%');
+            })
+            ->latest()
+            ->get();
+        return $searchResult;
+    }
 }

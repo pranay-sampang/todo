@@ -23,6 +23,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/todo/{id}', [TodoController::class, 'getTodoList'])->name('todo-list.index');
     Route::patch('/todo/{todo}', [TodoController::class, 'update'])->name('todo-list.update');
     Route::delete('/todo/{todo}', [TodoController::class, 'delete'])->name('todo-list.destroy');
+
+    Route::patch('/todo-task/{id}', [TodoController::class, 'updateTodoTask'])->name('todo-task.update');
+
+    Route::get('todo-search', [TodoController::class, 'searchTodo'])->name('todo-search');
 });
 
 require __DIR__.'/auth.php';

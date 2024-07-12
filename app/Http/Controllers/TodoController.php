@@ -50,4 +50,18 @@ class TodoController extends Controller
             return json_encode(['status' => 'error']);
         }
     }
+
+    public function updateTodoTask(Request $request, $id){
+        $deletedTodoList = $this->todoService->updateTodoTask($id, $request->input('status'));
+        if ($deletedTodoList) {
+            return json_encode(['status' => 'success']);
+        } else {
+            return json_encode(['status' => 'error']);
+        }
+    }
+
+    public function searchTodo(Request $request){
+        $todoLists = $this->todoService->getSearchResultForTodoRequests($request->query('query'));
+        return view('home.partials.todo-list', compact('todoLists'))->render();
+    }
 }
