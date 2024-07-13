@@ -85,3 +85,6 @@ input::placeholder{
 .strike{
     text-decoration: line-through;
 }
+.border-red {
+    border-color: #f7666e !important;
+}

@@ -7,7 +7,7 @@
                 <input type="text" class="form-control" id="search_todo" placeholder="Search Your Notes">
             </div>
             <div class="col-sm-auto">
-                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#newTaskModal">
+                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#createTodoModal">
                     New Todo
                     <i class="fa fa-plus-circle fa-fw"></i>
                 </button>
@@ -112,11 +112,11 @@
                         $('.todo-tasks-wrapper').empty();
                         let updateUrl = "{{ route('todo-list.update', 'todoListId') }}";
                         updateUrl = url.replace('todoListId', response[0].id);
-                        $('#edit_todo_list').attr('action', updateUrl);
+                        $('#edit_todo').attr('action', updateUrl);
                         $('#todo_list_id').val(response[0].id)
                         $.each(response[0].todo_task.slice(1), function(index, value) {
                             let newDiv = `
-                            <div class="mb-3">
+                            <div class="mt-3">
                                 <input type="text" name="task[]" value="${value.task}" class="form-control" id="title" placeholder="Enter Task">
                                 <div class="d-flex justify-content-end mt-2">
                                     <button type="button" class="add-more-btn btn btn-sm btn-outline-dark p-1 fs12 me-2">
@@ -131,7 +131,7 @@
                             </div>`;
                             $('.todo-tasks-wrapper').append(newDiv);
                         });
-                        $('#editTodoList').modal('show');
+                        $('#editTodoModal').modal('show');
                     }
                 });
             });

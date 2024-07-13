@@ -22,7 +22,9 @@ class TodoController extends Controller
         $validatedData = $request->validated();
         $created       = $this->todoService->create($validatedData);
         if ($created) {
-            return redirect()->route('index');
+            return response()->json(['error' => false, 'message' => 'Todo created successfully']);
+        } else {
+            return response()->json(['error' => true, 'message' => 'Something went wrong']);
         }
     }
 
@@ -37,7 +39,9 @@ class TodoController extends Controller
         $validatedData = $request->validated();
         $created       = $this->todoService->update($validatedData, $todo);
         if ($created) {
-            return redirect()->route('index');
+            return response()->json(['error' => false, 'message' => 'Todo created successfully']);
+        } else {
+            return response()->json(['error' => true, 'message' => 'Something went wrong']);
         }
     }
 
@@ -51,7 +55,8 @@ class TodoController extends Controller
         }
     }
 
-    public function updateTodoTask(Request $request, $id){
+    public function updateTodoTask(Request $request, $id)
+    {
         $deletedTodoList = $this->todoService->updateTodoTask($id, $request->input('status'));
         if ($deletedTodoList) {
             return json_encode(['status' => 'success']);
@@ -60,7 +65,8 @@ class TodoController extends Controller
         }
     }
 
-    public function searchTodo(Request $request){
+    public function searchTodo(Request $request)
+    {
         $todoLists = $this->todoService->getSearchResultForTodoRequests($request->query('query'));
         return view('home.partials.todo-list', compact('todoLists'))->render();
     }

@@ -15,13 +15,10 @@
                                 <x-text-input id="email" type="email" name="email" :value="old('email')" placeholder="Enter Email" />
                                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
                             </div>
-                            <div class="mb-2">
+                            <div class="mb-3">
                                 <x-input-label for="password" :value="__('Password')" />
                                 <x-text-input id="password" type="password" name="password" :value="old('password')" placeholder="Enter Password" />
                                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                            </div>
-                            <div class="mb-3">
-                                <a href="#">Forgot Your Password?</a>
                             </div>
                             <div class="mb-4 form-check">
                                 <x-input-checkbox class="form-check-input" name="remember" id="auth-remember-check" :value="__('Remember Me')" />
