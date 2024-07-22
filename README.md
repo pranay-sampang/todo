@@ -1,5 +1,5 @@
 
-# Welcome to Larael Todo 👋
+# Welcome to Laravel Todo Application 👋
 ![Todo App Screenshot](/public/assets/images/screenshots/hero.png)
 
 ## Getting Started
@@ -9,7 +9,7 @@ To run this project locally, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/1970Mr/todo-app-laravel
+   git clone https://github.com/pranay-sampang/todo.git
    ```
 
 2. Navigate to the project directory:
