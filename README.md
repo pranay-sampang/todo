@@ -15,7 +15,7 @@ To run this project locally, follow these steps:
 2. Navigate to the project directory:
 
    ```bash
-   cd todo-app-laravel
+   cd todo
    ```
 
 3. Install dependencies:
