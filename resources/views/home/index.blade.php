@@ -60,7 +60,7 @@
                         <div class="card-body">
                             <div class="text-center p-5 m-5">
                                 <p>You don't have created any todo list.</p>
-                                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#newTaskModal">
+                                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#createTodoModal">
                                     Create New Todo
                                     <i class="fa fa-plus-circle fa-fw"></i>
                                 </button>

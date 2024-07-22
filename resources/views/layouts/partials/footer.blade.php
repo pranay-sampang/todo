@@ -9,7 +9,7 @@
             <div class="modal-body p-4">
                 <form id="create_todo" action="{{ route('todo.store') }}" method="POST">
                     @csrf
-                    <div class="mt-3 input-wrapper">
+                    <div class="input-wrapper">
                         <x-input-label for="title" :value="__('Enter Title')" />
                         <x-text-input id="title" type="text" name="title" :value="old('title')" placeholder="Enter Title" />
                     </div>
@@ -52,7 +52,7 @@
                 <form id="edit_todo" method="POST">
                     @csrf
                     @method('PATCH')
-                    <div class="mt-3 input-wrapper">
+                    <div class="input-wrapper">
                         <x-input-label for="title" :value="__('Enter Title')" />
                         <x-text-input id="title" type="text" name="title" :value="old('title')" placeholder="Enter Title" />
                     </div>
