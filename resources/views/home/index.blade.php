@@ -75,18 +75,18 @@
     @else
     <div class="container-xl p-4">
         <div class="row cflex">
-            <div class="col-lg-6 col-md-6">
+            <div class="col-lg-6 col-md-6 col-sm-12 hero-wrapper">
                 <h1 class="fw-bold">TO-DO LIST</h1>
                 <p>
                     Welcome to a to-do list website which provides a user-friendly interface that
                     enables individuals to efficiently manage their tasks and deadlines. The website
                     should allow users to easily add, edit, and delete tasks.
                 </p>
-                <a href="{{ route('login') }}" type="button" class="create-btn btn btn-sm me-2">
+                <a href="{{ route('login') }}" type="button" class="create-btn btn btn-sm">
                     Start creating now
                 </a>
             </div>
-            <div class="col-lg-6 col-md-6 cflex">
+            <div class="col-lg-6 col-md-6 col-sm-12 bg-wrapper-cflex">
                 <div class="bg-wrapper">
                     <img src="{{ asset('assets/images/bg.png') }}" alt="Todo">
                 </div>

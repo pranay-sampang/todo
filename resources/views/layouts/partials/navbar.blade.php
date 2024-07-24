@@ -11,7 +11,7 @@
                         <a href="{{ route('login') }}" type="button" class="login-btn btn btn-sm me-2">
                             Login
                         </a>
-                        <a href="{{ route('register') }}" type="button" class="register-btn btn btn-sm p-1">
+                        <a href="{{ route('register') }}" type="button" class="register-btn btn btn-sm">
                             Register
                         </a>
                     </div>
